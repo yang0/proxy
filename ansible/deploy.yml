@@ -17,7 +17,7 @@
       tags: init, supervisor
 
     - supervisorctl:
-        name: proxy*
+        name: proxy:*
         state: restarted
       become: yes
       tags: restart,supervisor, localenv
