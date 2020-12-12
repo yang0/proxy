@@ -1,4 +1,4 @@
-[program:proxy-sheduler-crawler]
+[program:proxy-scheduler-crawler]
 directory={{ proxy.destDir }}
 command={{ virtualenv }}/bin/python scheduler_booter.py --usage crawler common ajax
 autostart=true
@@ -6,14 +6,29 @@ autorestart=true
 startretries=1
 startsecs=1
 redirect_stderr=true
-stderr_logfile=/data/ms/logs/supervisor/proxy-sheduler-crawler-err.log
-stdout_logfile=/data/ms/logs/supervisor/proxy-sheduler-crawler-out.log
+stderr_logfile=/data/ms/logs/supervisor/proxy-scheduler-crawler-err.log
+stdout_logfile=/data/ms/logs/supervisor/proxy-scheduler-crawler-out.log
 user={{ ansible_user }}
 killasgroup=true
 stopasgroup=true
 environment={{ supervisor.environment }}
 
-[program:proxy-sheduler-validator]
+[program:proxy-crawler-crawler]
+directory={{ proxy.destDir }}
+command={{ virtualenv }}/bin/python crawler_booter.py --usage crawler common ajax
+autostart=true
+autorestart=true
+startretries=1
+startsecs=1
+redirect_stderr=true
+stderr_logfile=/data/ms/logs/supervisor/proxy-crawler-crawler-err.log
+stdout_logfile=/data/ms/logs/supervisor/proxy-crawler-crawler-out.log
+user={{ ansible_user }}
+killasgroup=true
+stopasgroup=true
+environment={{ supervisor.environment }}
+
+[program:proxy-scheduler-validator]
 directory={{ proxy.destDir }}
 command={{ virtualenv }}/bin/python scheduler_booter.py --usage validator
 autostart=true
@@ -21,8 +36,8 @@ autorestart=true
 startretries=1
 startsecs=1
 redirect_stderr=true
-stderr_logfile=/data/ms/logs/supervisor/proxy-sheduler-validator-err.log
-stdout_logfile=/data/ms/logs/supervisor/proxy-sheduler-validator-out.log
+stderr_logfile=/data/ms/logs/supervisor/proxy-scheduler-validator-err.log
+stdout_logfile=/data/ms/logs/supervisor/proxy-scheduler-validator-out.log
 user={{ ansible_user }}
 killasgroup=true
 stopasgroup=true
@@ -43,17 +58,3 @@ killasgroup=true
 stopasgroup=true
 environment={{ supervisor.environment }}
 
-[program:proxy-crawler-crawler]
-directory={{ proxy.destDir }}
-command={{ virtualenv }}/bin/python crawler_booter.py --usage crawler common ajax
-autostart=true
-autorestart=true
-startretries=1
-startsecs=1
-redirect_stderr=true
-stderr_logfile=/data/ms/logs/supervisor/proxy-crawler-crawler-err.log
-stdout_logfile=/data/ms/logs/supervisor/proxy-crawler-crawler-out.log
-user={{ ansible_user }}
-killasgroup=true
-stopasgroup=true
-environment={{ supervisor.environment }}

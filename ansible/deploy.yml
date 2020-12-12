@@ -1,7 +1,7 @@
 #!/usr/bin/env ansible-playbook
 
 ---
-- name: play 'setup spider lxwc'
+- name: play 'setup spider proxy crawler'
   hosts: wq34
   gather_facts: yes
 
