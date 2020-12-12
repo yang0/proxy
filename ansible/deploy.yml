@@ -1,0 +1,25 @@
+#!/usr/bin/env ansible-playbook
+
+---
+- name: play 'setup spider lxwc'
+  hosts: wq34
+  gather_facts: yes
+
+  # roles:
+  #   - andrewrothstein.kafka
+
+  tasks:
+    - name: generate supervisor proxy.conf
+      template:
+        src: "templates/supervisor-proxy*.conf.j2"
+        dest: "/etc/{{ supervisor.conf_dir }}/proxy.{{ supervisor.file_suffix }}"
+      become: yes
+      tags: init, supervisor
+
+    - supervisorctl:
+        name: proxy*
+        state: restarted
+      become: yes
+      tags: restart,supervisor, localenv
+
+    

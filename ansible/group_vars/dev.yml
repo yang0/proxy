@@ -1,0 +1,5 @@
+version: 3.5.6
+file_name: apache-zookeeper-{{ version }}-bin
+srcFile: /e/dev_software/{{ file_name }}.tar.gz
+destDir: '/home/{{ ansible_user }}/installer'
+zkDir: '{{ destDir }}/{{ file_name }}'

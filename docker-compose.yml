@@ -1,0 +1,26 @@
+version: "2.0"
+
+networks:
+  ms-net:
+    external: false
+
+services:
+  splash:
+    image: scrapinghub/splash
+    ports:
+      - "8050:8050"
+    networks:
+      - ms-net
+  haipproxy:
+    build: .
+    command: sh run.sh
+    volumes:
+      - .:/haipproxy
+    ports:
+      - "3128:3128"
+    networks:
+      - ms-net
+    depends_on:
+      - splash
+      - redis
+

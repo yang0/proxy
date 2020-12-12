@@ -1,0 +1,59 @@
+[program:proxy-sheduler-crawler]
+directory={{ proxy.destDir }}
+command={{ virtualenv }}/bin/python scheduler_booter.py --usage crawler common ajax
+autostart=true
+autorestart=true
+startretries=1
+startsecs=1
+redirect_stderr=true
+stderr_logfile=/data/ms/logs/supervisor/proxy-sheduler-crawler-err.log
+stdout_logfile=/data/ms/logs/supervisor/proxy-sheduler-crawler-out.log
+user={{ ansible_user }}
+killasgroup=true
+stopasgroup=true
+environment={{ supervisor.environment }}
+
+[program:proxy-sheduler-validator]
+directory={{ proxy.destDir }}
+command={{ virtualenv }}/bin/python scheduler_booter.py --usage validator
+autostart=true
+autorestart=true
+startretries=1
+startsecs=1
+redirect_stderr=true
+stderr_logfile=/data/ms/logs/supervisor/proxy-sheduler-validator-err.log
+stdout_logfile=/data/ms/logs/supervisor/proxy-sheduler-validator-out.log
+user={{ ansible_user }}
+killasgroup=true
+stopasgroup=true
+environment={{ supervisor.environment }}
+
+[program:proxy-crawler-validator]
+directory={{ proxy.destDir }}
+command={{ virtualenv }}/bin/python crawler_booter.py --usage validator
+autostart=true
+autorestart=true
+startretries=1
+startsecs=1
+redirect_stderr=true
+stderr_logfile=/data/ms/logs/supervisor/proxy-crawler-validator-err.log
+stdout_logfile=/data/ms/logs/supervisor/proxy-crawler-validator-out.log
+user={{ ansible_user }}
+killasgroup=true
+stopasgroup=true
+environment={{ supervisor.environment }}
+
+[program:proxy-crawler-crawler]
+directory={{ proxy.destDir }}
+command={{ virtualenv }}/bin/python crawler_booter.py --usage crawler common ajax
+autostart=true
+autorestart=true
+startretries=1
+startsecs=1
+redirect_stderr=true
+stderr_logfile=/data/ms/logs/supervisor/proxy-crawler-crawler-err.log
+stdout_logfile=/data/ms/logs/supervisor/proxy-crawler-crawler-out.log
+user={{ ansible_user }}
+killasgroup=true
+stopasgroup=true
+environment={{ supervisor.environment }}

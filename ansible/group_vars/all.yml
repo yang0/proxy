@@ -1,0 +1,6 @@
+supervisor:
+  conf_dir: supervisor/conf.d
+  file_suffix: conf
+
+virtualenv: '/home/{{ ansible_user }}/.pyenv/versions/ms'
+

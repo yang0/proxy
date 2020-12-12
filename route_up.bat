@@ -1,0 +1,20 @@
+ipconfig /flushdns
+route add 91.185.209.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 198.255.98.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 198.54.126.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 118.190.66.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 58.218.199.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 203.205.136.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 23.23.154.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 3.230.36.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 123.206.88.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 121.42.245.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 184.72.216.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 36.51.254.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 114.80.187.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 195.24.68.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 34.235.36.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 89.208.212.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 85.214.115.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 121.42.146.0 mask 255.255.255.0 192.168.0.1 metric 5 
+route add 203.205.137.0 mask 255.255.255.0 192.168.0.1 metric 5 

@@ -1,0 +1,6 @@
+supervisor:
+  conf_dir: supervisord.d
+  file_suffix: ini
+  environment: http_proxy='http://172.16.24.29:3128', https_proxy='http://172.16.24.29:3128', no_proxy='localhost, 127.0.0.1, ::1'
+spider_lxwc:
+    destDir: /data/ms/spiders/lxwc

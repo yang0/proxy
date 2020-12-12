@@ -1,0 +1,10 @@
+raven
+redis
+requests
+schedule
+Twisted
+Flask
+Scrapy
+scrapy-splash
+prometheus-client
+click
