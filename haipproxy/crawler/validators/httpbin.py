@@ -7,6 +7,7 @@ import json
 from json.decoder import JSONDecodeError
 
 import requests
+from loguru import logger
 
 from haipproxy.config.rules import (
     SPEED_MAPS, TTL_MAPS,
@@ -68,6 +69,7 @@ class HttpBinInitValidator(BaseValidator, ValidatorRedisSpider):
         tasks = self.https_tasks if 'https' in url else self.http_tasks
         # todo set proxy to tmp_queue
         for task in tasks:
+            # logger.info(f"写入{task}, proxy:{proxy}, url:{url}, incr: {incr}")
             score_item = ProxyScoreItem(url=proxy, score=score, incr=incr)
             ttl_item = ProxyVerifiedTimeItem(url=proxy, verified_time=int(time.time()), incr=incr)
             speed_item = ProxySpeedItem(url=proxy, response_time=speed, incr=incr)

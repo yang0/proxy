@@ -108,22 +108,20 @@ CRAWLER_TASKS = [
         'enable': 1,
     },
     {
-        'name': '66ip.cn', # ok
-        'resource': ['http://www.66ip.cn/%s.html' % i for i in range(1, 3)] +
-                    ['http://www.66ip.cn/areaindex_%s/%s.html' % (i, j)
-                     for i in range(1, 35) for j in range(1, 3)],
+        'name': '66ip.cn', #ok
+        'resource': ['http://www.66ip.cn/mo.php?sxb=&tqsl=1000&port=&export=&ktip=&sxa=&submit=%CC%E1++%C8%A1&textarea='],
         'task_queue': SPIDER_COMMON_TASK,
         'parse_type': 'common',
         'parse_rule': {
             'pre_extract_method': 'xpath',
-            'pre_extract': '//tr',
-            'infos_pos': 4,
-            'infos_end': None,
-            'detail_rule': 'td::text',
+            'pre_extract': '//body/p/text()',
+            'infos_pos': 0,
+            'infos_end': -4,
+            'detail_rule': None,
             'ip_pos': 0,
             'port_pos': 1,
             'extract_protocol': True,
-            'split_detail': False,
+            'split_detail': True,
             'protocols': None
         },
         'interval': 2 * 60,
@@ -269,7 +267,7 @@ CRAWLER_TASKS = [
             'http://cn-proxy.com/',
             'http://cn-proxy.com/archives/218'
         ],
-        'task_queue': SPIDER_COMMON_TASK, #SPIDER_GFW_TASK,
+        'task_queue': SPIDER_GFW_TASK,
         'parse_type': 'common',
         'parse_rule': {
             'pre_extract_method': 'xpath',
@@ -368,37 +366,37 @@ CRAWLER_TASKS = [
         'enable': 1,
         'gfw': True
     },
-    {
-        'name': 'www.cnproxy.com', # ok
-        'resource': ['http://www.cnproxy.com/proxy%s.html' % i for i in range(1, 11)], #+
-                    # ['http://www.cnproxy.com/proxyedu%s.html' % i for i in range(1, 3)],
-        'task_queue':  SPIDER_AJAX_GFW_TASK,
-        'parse_type': 'cnproxy',
-        'interval': 60,
-        'enable': 1,
-        'gfw': True
-    },
-    {
-        'name': 'proxy-list.org',
-        'resource': ['https://proxy-list.org/english/index.php?p=%s' % i for i in range(1, 11)],
-        'task_queue': SPIDER_AJAX_GFW_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'css',
-            'pre_extract': '.table ul',
-            'infos_pos': 1,
-            'infos_end': None,
-            'detail_rule': 'li::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': True,
-            'protocols': None
-        },
-        'interval': 60,
-        'enable': 1,
-        'gfw': True
-    },
+    # {
+    #     'name': 'www.cnproxy.com', # todo
+    #     'resource': ['http://www.cnproxy.com/proxy%s.html' % i for i in range(1, 11)], #+
+    #                 # ['http://www.cnproxy.com/proxyedu%s.html' % i for i in range(1, 3)],
+    #     'task_queue':  SPIDER_AJAX_GFW_TASK,
+    #     'parse_type': 'cnproxy',
+    #     'interval': 60,
+    #     'enable': 1,
+    #     'gfw': True
+    # },
+    # {
+    #     'name': 'proxy-list.org', # todo
+    #     'resource': ['https://proxy-list.org/english/index.php?p=%s' % i for i in range(1, 11)],
+    #     'task_queue': SPIDER_AJAX_GFW_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'css',
+    #         'pre_extract': '.table ul',
+    #         'infos_pos': 1,
+    #         'infos_end': None,
+    #         'detail_rule': 'li::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': True,
+    #         'protocols': None
+    #     },
+    #     'interval': 60,
+    #     'enable': 1,
+    #     'gfw': True
+    # },
     
 ]
 

@@ -79,13 +79,20 @@ class BaseSpider:
         else:
             infos = response.css(pre_extract)
         # logger.info(f"infos: {response.xpath('//body').get()}")
+        # logger.info(f"infos: {infos}")
+        # logger.info(f"detail_rule：{detail_rule}")
         items = list()
         for info in infos:
             info_str = info.extract()
             # logger.debug(f"info_str: {info_str}")
+            # logger.debug(f"info: {info}")
             if '透明' in info_str or 'transparent' in info_str.lower():
                 continue
-            proxy_detail = info.css(detail_rule).extract()
+
+            if detail_rule:
+                proxy_detail = info.css(detail_rule).extract()
+            else:
+                proxy_detail = [info.extract().strip()]
             # logger.debug(f"proxy_detail: {proxy_detail}")
             if not proxy_detail:
                 continue

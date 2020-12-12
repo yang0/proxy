@@ -24,5 +24,5 @@ all_validators = [
 ]
 
 douban_validators = [
-    DoubanValidator#HttpBinInitValidator
+    HttpBinInitValidator
 ]

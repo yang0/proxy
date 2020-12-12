@@ -55,7 +55,7 @@ SPIDER_MIDDLEWARES = {
 }
 
 # scrapy log settings
-LOG_LEVEL = 'ERROR'
+LOG_LEVEL = 'DEBUG'
 # LOG_FILE = 'logs/haipproxy.log'
 
 

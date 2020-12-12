@@ -12,6 +12,8 @@ from ..items import (
     ProxySpeedItem)
 from loguru import logger
 
+
+
 class BaseValidator:
     """base validator for all the validators"""
     name = 'base'
@@ -40,6 +42,7 @@ class BaseValidator:
     score_queue = None
     ttl_queue = None
     speed_queue = None
+    ok_num = 0
 
     def parse(self, response):
         logger.debug(f"spider name:{self.name}")
@@ -74,7 +77,9 @@ class BaseValidator:
 
     def is_ok(self, response):
         result = self.success_key in response.text
-        logger.debug(f"is_ok: {result}")
+        if result:
+            self.ok_num += 1
+        logger.debug(f"is_ok: {result}, 累计ok_num：{self.ok_num}")
         return result
 
     def set_item_queue(self, url, proxy, score, incr, speed=0):
