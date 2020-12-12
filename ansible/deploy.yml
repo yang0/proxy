@@ -2,7 +2,7 @@
 
 ---
 - name: play 'setup spider proxy crawler'
-  hosts: wq34
+  hosts: localhost
   gather_facts: yes
 
   # roles:
