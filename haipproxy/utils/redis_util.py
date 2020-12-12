@@ -13,7 +13,7 @@ def get_redis_conn(**kwargs):
     port = kwargs.get('port', REDIS_PORT)
     db = kwargs.get('db', REDIS_DB)
     password = kwargs.get('password', REDIS_PASSWORD)
-    return redis.Redis(host, port, db, password)
+    return redis.StrictRedis(host, port, db, password)
 
 
 def acquire_lock(conn, lock_name, acquire_timeout=10, lock_timeout=10):
