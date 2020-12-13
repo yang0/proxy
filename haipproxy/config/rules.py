@@ -23,244 +23,244 @@ __all__ = ['CRAWLER_TASKS', 'VALIDATOR_TASKS', 'CRAWLER_TASK_MAPS',
 
 
 CRAWLER_TASKS = [
-    {
-        'name': 'xiladaili', # ok
-        'resource': ['http://www.xiladaili.com/gaoni/%s/' % i for i in range(1, 200)],
-        'task_queue': SPIDER_COMMON_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'xpath',
-            'pre_extract': '//tr',
-            'infos_pos': 1,
-            'infos_end': None,
-            'detail_rule': 'td::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': True,
-            'protocols': None
-        },
-        'interval': 60 * 2,
-        'enable': 1
-    },
+    # {
+    #     'name': 'xiladaili', # ok
+    #     'resource': ['http://www.xiladaili.com/gaoni/%s/' % i for i in range(1, 200)],
+    #     'task_queue': SPIDER_COMMON_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'xpath',
+    #         'pre_extract': '//tr',
+    #         'infos_pos': 1,
+    #         'infos_end': None,
+    #         'detail_rule': 'td::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': True,
+    #         'protocols': None
+    #     },
+    #     'interval': 60 * 2,
+    #     'enable': 1
+    # },
 
-    {
-        'name': 'www.kuaidaili.com', # ok
-        'resource': ['https://www.kuaidaili.com/free/inha/%s' % i for i in range(1, 6)] +
-                    ['https://www.kuaidaili.com/proxylist/%s' % i for i in range(1, 11)],
-        'task_queue': SPIDER_COMMON_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'xpath',
-            'pre_extract': '//tr',
-            'infos_pos': 4,
-            'infos_end': None,
-            'detail_rule': 'td::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': False,
-            'protocols': None
-        },
-        'interval': 60,
-        'enable': 1
-    },
-    {
-        'name': 'kxdaili.com', # ok
-        'resource': [
-            'http://www.kxdaili.com/dailiip/%s/%s.html#ip' % (i, j) for i in range(1, 3) for j in range(1, 11)
-        ],
-        'task_queue': SPIDER_COMMON_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'xpath',
-            'pre_extract': '//tr',
-            'infos_pos': 1,
-            'infos_end': None,
-            'detail_rule': 'td::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': False,
-            'protocols': None
-        },
-        'interval': 60,
-        'enable': 1
-    },
-    {
-        'name': 'mrhinkydink.com', # ok
-        'resource': ['http://www.mrhinkydink.com/proxies.htm'],
-        'task_queue': SPIDER_COMMON_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'css',
-            'pre_extract': '.text',
-            'infos_pos': 1,
-            'infos_end': None,
-            'detail_rule': 'td::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': False,
-            'protocols': None
-        },
-        'interval': 2 * 60,
-        'enable': 1,
-    },
-    {
-        'name': '66ip.cn', #ok
-        'resource': ['http://www.66ip.cn/mo.php?sxb=&tqsl=1000&port=&export=&ktip=&sxa=&submit=%CC%E1++%C8%A1&textarea='],
-        'task_queue': SPIDER_COMMON_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'xpath',
-            'pre_extract': '//body/p/text()',
-            'infos_pos': 0,
-            'infos_end': -4,
-            'detail_rule': None,
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': True,
-            'protocols': None
-        },
-        'interval': 2 * 60,
-        'enable': 1
-    },
-    {
-        'name': 'data5u.com', # ok
-        'resource': [
-            'http://www.data5u.com/'
-        ],
-        'task_queue': SPIDER_COMMON_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'xpath',
-            'pre_extract': '//ul[contains(@class, "l2")]',
-            'infos_pos': 0,
-            'infos_end': None,
-            'detail_rule': 'span li::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': False,
-            'protocols': None
-        },
-        'interval': 10,
-        'enable': 1,
-    },
-    {
-        'name': 'ip3366.net',  # ok
-        'resource': ['http://www.ip3366.net/free/?stype=1&page=%s' % i for i in range(1, 3)] +
-                    ['http://www.ip3366.net/free/?stype=3&page=%s' % i for i in range(1, 3)],
-        'task_queue': SPIDER_COMMON_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'xpath',
-            'pre_extract': '//tr',
-            'infos_pos': 1,
-            'infos_end': None,
-            'detail_rule': 'td::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': False,
-            'protocols': None
-        },
-        'interval': 30,
-        'enable': 1
-    },
-    {
-        'name': 'ab57.ru', #ok
-        'resource': ['http://ab57.ru/downloads/proxyold.txt'],
-        'task_queue': SPIDER_COMMON_TASK,
-        'parse_type': 'text',
-        'parse_rule': {
-            'pre_extract': None,
-            'delimiter': '\r\n',
-            'redundancy': None,
-            'protocols': None
-        },
-        'interval': 60,
-        'enable': 1,
-    },
-    {
-        'name': 'proxylists.net', #ok
-        'resource': ['http://www.proxylists.net/http_highanon.txt'],
-        'parse_type': 'text',
-        'task_queue': SPIDER_COMMON_TASK,
-        'parse_rule': {
-            'pre_extract': None,
-            'delimiter': '\r\n',
-            'redundancy': None,
-            'protocols': None
-        },
-        'interval': 60,
-        'enable': 1,
-    },
-    {
-        'name': 'atomintersoft.com', # ok
-        'resource': [
-            'http://www.atomintersoft.com/high_anonymity_elite_proxy_list',
-            'http://www.atomintersoft.com/anonymous_proxy_list',
-        ],
-        'task_queue': SPIDER_COMMON_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'xpath',
-            'pre_extract': '//tr',
-            'infos_pos': 1,
-            'infos_end': None,
-            'detail_rule': 'td::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': True,
-            'protocols': None
-        },
-        'interval': 60,
-        'enable': 1,
-    },
-    {
-        'name': 'proxydb.net', # ok
-        'resource': ['http://proxydb.net'],
-        'task_queue': SPIDER_AJAX_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'detail_rule': 'a::text',
-            'split_detail': True,
-        },
-        'interval': 3 * 60,
-        'enable': 1,
-    },
-    {
-        'name': 'cool-proxy.net', # ok
-        'resource': ['https://cool-proxy.net/'],
-        'task_queue': SPIDER_AJAX_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'xpath',
-            'pre_extract': '//tr',
-            'infos_pos': 1,
-            'infos_end': -1,
-            'detail_rule': 'td::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': False,
-            'protocols': None
-        },
-        'interval': 30,
-        'enable': 1,
-    },
-    {
-        'name': 'www.goubanjia.com', # ok
-        'resource': ['http://www.goubanjia.com/'],
-        'task_queue': SPIDER_AJAX_TASK,
-        'parse_type': 'goubanjia',
-        'interval': 10,
-        'enable': 1,
-    },
+    # {
+    #     'name': 'www.kuaidaili.com', # ok
+    #     'resource': ['https://www.kuaidaili.com/free/inha/%s' % i for i in range(1, 6)] +
+    #                 ['https://www.kuaidaili.com/proxylist/%s' % i for i in range(1, 11)],
+    #     'task_queue': SPIDER_COMMON_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'xpath',
+    #         'pre_extract': '//tr',
+    #         'infos_pos': 4,
+    #         'infos_end': None,
+    #         'detail_rule': 'td::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': False,
+    #         'protocols': None
+    #     },
+    #     'interval': 60,
+    #     'enable': 1
+    # },
+    # {
+    #     'name': 'kxdaili.com', # ok
+    #     'resource': [
+    #         'http://www.kxdaili.com/dailiip/%s/%s.html#ip' % (i, j) for i in range(1, 3) for j in range(1, 11)
+    #     ],
+    #     'task_queue': SPIDER_COMMON_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'xpath',
+    #         'pre_extract': '//tr',
+    #         'infos_pos': 1,
+    #         'infos_end': None,
+    #         'detail_rule': 'td::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': False,
+    #         'protocols': None
+    #     },
+    #     'interval': 60,
+    #     'enable': 1
+    # },
+    # {
+    #     'name': 'mrhinkydink.com', # ok
+    #     'resource': ['http://www.mrhinkydink.com/proxies.htm'],
+    #     'task_queue': SPIDER_COMMON_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'css',
+    #         'pre_extract': '.text',
+    #         'infos_pos': 1,
+    #         'infos_end': None,
+    #         'detail_rule': 'td::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': False,
+    #         'protocols': None
+    #     },
+    #     'interval': 2 * 60,
+    #     'enable': 1,
+    # },
+    # {
+    #     'name': '66ip.cn', #ok
+    #     'resource': ['http://www.66ip.cn/mo.php?sxb=&tqsl=1000&port=&export=&ktip=&sxa=&submit=%CC%E1++%C8%A1&textarea='],
+    #     'task_queue': SPIDER_COMMON_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'xpath',
+    #         'pre_extract': '//body/p/text()',
+    #         'infos_pos': 0,
+    #         'infos_end': -4,
+    #         'detail_rule': None,
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': True,
+    #         'protocols': None
+    #     },
+    #     'interval': 2 * 60,
+    #     'enable': 1
+    # },
+    # {
+    #     'name': 'data5u.com', # ok
+    #     'resource': [
+    #         'http://www.data5u.com/'
+    #     ],
+    #     'task_queue': SPIDER_COMMON_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'xpath',
+    #         'pre_extract': '//ul[contains(@class, "l2")]',
+    #         'infos_pos': 0,
+    #         'infos_end': None,
+    #         'detail_rule': 'span li::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': False,
+    #         'protocols': None
+    #     },
+    #     'interval': 10,
+    #     'enable': 1,
+    # },
+    # {
+    #     'name': 'ip3366.net',  # ok
+    #     'resource': ['http://www.ip3366.net/free/?stype=1&page=%s' % i for i in range(1, 3)] +
+    #                 ['http://www.ip3366.net/free/?stype=3&page=%s' % i for i in range(1, 3)],
+    #     'task_queue': SPIDER_COMMON_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'xpath',
+    #         'pre_extract': '//tr',
+    #         'infos_pos': 1,
+    #         'infos_end': None,
+    #         'detail_rule': 'td::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': False,
+    #         'protocols': None
+    #     },
+    #     'interval': 30,
+    #     'enable': 1
+    # },
+    # {
+    #     'name': 'ab57.ru', #ok
+    #     'resource': ['http://ab57.ru/downloads/proxyold.txt'],
+    #     'task_queue': SPIDER_COMMON_TASK,
+    #     'parse_type': 'text',
+    #     'parse_rule': {
+    #         'pre_extract': None,
+    #         'delimiter': '\r\n',
+    #         'redundancy': None,
+    #         'protocols': None
+    #     },
+    #     'interval': 60,
+    #     'enable': 1,
+    # },
+    # {
+    #     'name': 'proxylists.net', #ok
+    #     'resource': ['http://www.proxylists.net/http_highanon.txt'],
+    #     'parse_type': 'text',
+    #     'task_queue': SPIDER_COMMON_TASK,
+    #     'parse_rule': {
+    #         'pre_extract': None,
+    #         'delimiter': '\r\n',
+    #         'redundancy': None,
+    #         'protocols': None
+    #     },
+    #     'interval': 60,
+    #     'enable': 1,
+    # },
+    # {
+    #     'name': 'atomintersoft.com', # ok
+    #     'resource': [
+    #         'http://www.atomintersoft.com/high_anonymity_elite_proxy_list',
+    #         'http://www.atomintersoft.com/anonymous_proxy_list',
+    #     ],
+    #     'task_queue': SPIDER_COMMON_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'xpath',
+    #         'pre_extract': '//tr',
+    #         'infos_pos': 1,
+    #         'infos_end': None,
+    #         'detail_rule': 'td::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': True,
+    #         'protocols': None
+    #     },
+    #     'interval': 60,
+    #     'enable': 1,
+    # },
+    # {
+    #     'name': 'proxydb.net', # ok
+    #     'resource': ['http://proxydb.net'],
+    #     'task_queue': SPIDER_AJAX_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'detail_rule': 'a::text',
+    #         'split_detail': True,
+    #     },
+    #     'interval': 3 * 60,
+    #     'enable': 1,
+    # },
+    # {
+    #     'name': 'cool-proxy.net', # ok
+    #     'resource': ['https://cool-proxy.net/'],
+    #     'task_queue': SPIDER_AJAX_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'xpath',
+    #         'pre_extract': '//tr',
+    #         'infos_pos': 1,
+    #         'infos_end': -1,
+    #         'detail_rule': 'td::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': False,
+    #         'protocols': None
+    #     },
+    #     'interval': 30,
+    #     'enable': 1,
+    # },
+    # {
+    #     'name': 'www.goubanjia.com', # ok
+    #     'resource': ['http://www.goubanjia.com/'],
+    #     'task_queue': SPIDER_AJAX_TASK,
+    #     'parse_type': 'goubanjia',
+    #     'interval': 10,
+    #     'enable': 1,
+    # },
     {
         'name': 'cn-proxy.com', # ok
         'resource': [
@@ -285,87 +285,87 @@ CRAWLER_TASKS = [
         'enable': 1,
         'gfw': True
     },
-    {
-        'name': 'sslproxies',
-        'resource': [
-            'https://www.sslproxies.org/',          
-        ],
-        'task_queue': SPIDER_GFW_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'xpath',
-            'pre_extract': '//tbody//tr',
-            'infos_pos': 0,
-            'infos_end': None,
-            'detail_rule': 'td::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': False,
-            'protocols': None
-        },
-        'interval': 60,
-        'enable': 1,
-        'gfw': True
-    },
-    {
-        'name': 'free-proxy-list',
-        'resource': [
-            'https://free-proxy-list.net/anonymous-proxy.html', # 这个页面有ajax分页，待处理
-            'https://free-proxy-list.net/uk-proxy.html',
-            'https://free-proxy-list.net/',
+    # {
+    #     'name': 'sslproxies',
+    #     'resource': [
+    #         'https://www.sslproxies.org/',          
+    #     ],
+    #     'task_queue': SPIDER_GFW_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'xpath',
+    #         'pre_extract': '//tbody//tr',
+    #         'infos_pos': 0,
+    #         'infos_end': None,
+    #         'detail_rule': 'td::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': False,
+    #         'protocols': None
+    #     },
+    #     'interval': 60,
+    #     'enable': 1,
+    #     'gfw': True
+    # },
+    # {
+    #     'name': 'free-proxy-list',
+    #     'resource': [
+    #         'https://free-proxy-list.net/anonymous-proxy.html', # 这个页面有ajax分页，待处理
+    #         'https://free-proxy-list.net/uk-proxy.html',
+    #         'https://free-proxy-list.net/',
             
-        ],
-        'task_queue': SPIDER_GFW_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'xpath',
-            'pre_extract': '//tbody//tr',
-            'infos_pos': 0,
-            'infos_end': None,
-            'detail_rule': 'td::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': False,
-            'protocols': None
-        },
-        'interval': 60,
-        'enable': 1,
-        'gfw': True
-    },
-    {
-        'name': 'us-proxy',
-        'resource': [
-            'https://www.us-proxy.org/',
-        ],
-        'task_queue': SPIDER_GFW_TASK,
-        'parse_type': 'common',
-        'parse_rule': {
-            'pre_extract_method': 'xpath',
-            'pre_extract': '//tbody//tr',
-            'infos_pos': 0,
-            'infos_end': None,
-            'detail_rule': 'td::text',
-            'ip_pos': 0,
-            'port_pos': 1,
-            'extract_protocol': True,
-            'split_detail': False,
-            'protocols': None
-        },
-        'interval': 60,
-        'enable': 1,
-        'gfw': True
-    },
-    {
-        'name': 'www.xroxy.com', # ok
-        'resource': ['https://www.xroxy.com/proxylist.php?port=&type=&ssl=&country=&latency=&reliability=&sort=reliability&desc=true&pnum=%s#table' % i for i in range(20)],
-        'task_queue': SPIDER_GFW_TASK,
-        'parse_type': 'xroxy',
-        'interval': 60,
-        'enable': 1,
-        'gfw': True
-    },
+    #     ],
+    #     'task_queue': SPIDER_GFW_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'xpath',
+    #         'pre_extract': '//tbody//tr',
+    #         'infos_pos': 0,
+    #         'infos_end': None,
+    #         'detail_rule': 'td::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': False,
+    #         'protocols': None
+    #     },
+    #     'interval': 60,
+    #     'enable': 1,
+    #     'gfw': True
+    # },
+    # {
+    #     'name': 'us-proxy',
+    #     'resource': [
+    #         'https://www.us-proxy.org/',
+    #     ],
+    #     'task_queue': SPIDER_GFW_TASK,
+    #     'parse_type': 'common',
+    #     'parse_rule': {
+    #         'pre_extract_method': 'xpath',
+    #         'pre_extract': '//tbody//tr',
+    #         'infos_pos': 0,
+    #         'infos_end': None,
+    #         'detail_rule': 'td::text',
+    #         'ip_pos': 0,
+    #         'port_pos': 1,
+    #         'extract_protocol': True,
+    #         'split_detail': False,
+    #         'protocols': None
+    #     },
+    #     'interval': 60,
+    #     'enable': 1,
+    #     'gfw': True
+    # },
+    # {
+    #     'name': 'www.xroxy.com', # ok
+    #     'resource': ['https://www.xroxy.com/proxylist.php?port=&type=&ssl=&country=&latency=&reliability=&sort=reliability&desc=true&pnum=%s#table' % i for i in range(20)],
+    #     'task_queue': SPIDER_GFW_TASK,
+    #     'parse_type': 'xroxy',
+    #     'interval': 60,
+    #     'enable': 1,
+    #     'gfw': True
+    # },
     # {
     #     'name': 'www.cnproxy.com', # todo
     #     'resource': ['http://www.cnproxy.com/proxy%s.html' % i for i in range(1, 11)], #+
