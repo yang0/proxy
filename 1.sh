@@ -1,1 +1,2 @@
-python scheduler_booter.py --usage crawler common ajax
+python scheduler_booter.py --usage test
+# crawler common ajax
