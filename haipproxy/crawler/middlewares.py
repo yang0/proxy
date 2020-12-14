@@ -39,6 +39,7 @@ class ProxyMiddleware(object):
             pass
 
         if spider.proxy_mode == 2:
+            logger.info(f"代理：{GFW_PROXY}")
             if 'splash' in request.meta:
                 request.meta['splash']['args']['proxy'] = GFW_PROXY
             else:
